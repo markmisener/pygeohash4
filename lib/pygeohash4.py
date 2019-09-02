@@ -27,7 +27,7 @@ class GeoHash4:
 
     def encode(self, lon, lat, precision=24):
         longitude = self.get_bits(lon, -180, 180, precision)
-        latitude = self.get_bits(lat, -180, 180, precision)
+        latitude = self.get_bits(lat, -90, 90, precision)
         return self.merge_bits(longitude, latitude)
 
     def decode(self, geohash):

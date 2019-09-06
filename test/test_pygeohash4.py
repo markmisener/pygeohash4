@@ -1,7 +1,7 @@
 from lib.pygeohash4 import GeoHash4
 
 HASHER = GeoHash4()
-COORDS = {"lon": -77.03651183831396, "lat": 38.89773309824841}
+COORDS = {"lon": -122.41926450113175, "lat": 37.77929789130809}
 
 
 def test_init():
@@ -15,13 +15,13 @@ def test_get_bits():
     value = COORDS["lon"]
     min = -180
     max = 180
-    assert HASHER.get_bits(value, min, max, 24) == "010010010011011111101110"
-    assert HASHER.get_bits(value, min, max, 12) == "010010010011"
+    assert HASHER.get_bits(value, min, max, 24) == "001010001111001001000000"
+    assert HASHER.get_bits(value, min, max, 12) == "001010001111"
     value = COORDS["lat"]
     min = -90
     max = 90
-    assert HASHER.get_bits(value, min, max, 24) == "101101110101001000111011"
-    assert HASHER.get_bits(value, min, max, 12) == "101101110101"
+    assert HASHER.get_bits(value, min, max, 24) == "101101011011101100000101"
+    assert HASHER.get_bits(value, min, max, 12) == "101101011011"
 
 
 def test_merge_bits():
@@ -34,8 +34,9 @@ def test_encode():
     """Tests the GeoHash4.encode method"""
     lon = COORDS["lon"]
     lat = COORDS["lat"]
-    assert HASHER.encode(lon, lat, 12) == "cbacdacdcadb"
-    assert HASHER.encode(lon, lat, 6) == "cbacda"
+    assert HASHER.encode(lon, lat) == "cadcbcacdbddcadcabaaacac"
+    assert HASHER.encode(lon, lat, 12) == "cadcbcacdbdd"
+    assert HASHER.encode(lon, lat, 6) == "cadcbc"
 
 
 def test_decode():

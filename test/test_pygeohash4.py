@@ -5,13 +5,13 @@ COORDS = {"lon": -122.41926450113175, "lat": 37.77929789130809}
 
 
 def test_init():
-    """hasher initializes accurately"""
+    """Hasher initializes accurately."""
     assert HASHER.b4_bits == {"00": "a", "01": "b", "10": "c", "11": "d"}
     assert HASHER.invert == {"a": [0, 0], "b": [0, 1], "c": [1, 0], "d": [1, 1]}
 
 
 def test_get_bits():
-    """Tests the GeoHash4.get_bits method"""
+    """Tests the GeoHash4.get_bits method."""
     value = COORDS["lon"]
     min = -180
     max = 180
@@ -25,13 +25,13 @@ def test_get_bits():
 
 
 def test_merge_bits():
-    """Tests the GeoHash4.merge_bits method"""
+    """Tests the GeoHash4.merge_bits method."""
     assert HASHER.merge_bits("00", "10") == "ca"
     assert HASHER.merge_bits("001010", "101101") == "cadcbc"
 
 
 def test_encode():
-    """Tests the GeoHash4.encode method"""
+    """Tests the GeoHash4.encode method."""
     lon = COORDS["lon"]
     lat = COORDS["lat"]
     assert HASHER.encode(lon, lat) == "cadcbcacdbddcadcabaaacac"
@@ -40,7 +40,7 @@ def test_encode():
 
 
 def test_decode():
-    """Tests the GeoHash4.decode method"""
+    """Tests the GeoHash4.decode method."""
     assert HASHER.decode("cbacdacdcadb") == {
         "longitude": -77.0361328125,
         "latitude": 19.44580078125,

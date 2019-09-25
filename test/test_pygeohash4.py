@@ -1,4 +1,4 @@
-from lib.pygeohash4 import GeoHash4
+from pygeohash4.geohash4 import GeoHash4
 
 HASHER = GeoHash4()
 COORDS = {"lon": -122.41926450113175, "lat": 37.77929789130809}

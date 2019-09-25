@@ -11,9 +11,15 @@ pip install git+git://github.com/markmisener/pygeohash4.git
 ## Usage
 
 ```python
-from lib.pygeohash4 import GeoHash4
+from pygeohash4.geohash4 import GeoHash4
 
+HASHER = GeoHash4()
 
+HASHER.encode(-122.41926450113175, 37.77929789130809)
+>"cadcbcacdbddcadcabaaacac"
+
+HASHER.decode("cbacdacdcadb")
+>{"longitude": -77.0361328125, "latitude": 19.44580078125, "latitude_margin": 0.02197265625, "longitude_margin": 0.0439453125}
 
 ```
 

@@ -2,10 +2,6 @@ services:
   - docker
 matrix:
   include:
-    - name: pre-commit
-      language: python
-      python: "3.6"
-      script: make pre-commit
     - name: unit-tests
       language: python
       python: "3.6"

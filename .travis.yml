@@ -1,0 +1,8 @@
+services:
+  - docker
+matrix:
+  include:
+    - name: unit-tests
+      language: python
+      python: "3.6"
+      script: make test
